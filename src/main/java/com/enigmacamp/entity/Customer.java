@@ -14,7 +14,6 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @Builder
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "mst_customer")
@@ -38,4 +37,28 @@ public class Customer {
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+7")
     @Column(name = "deleted_at")
     private LocalDate deletedAt = null;
+
+    @Override
+    public String toString() {
+        return String.format("""
+                Customer {
+                    id : %s,
+                    firstName : %s,
+                    lastName : %s,
+                    dateOfBirth : %s,
+                    phone: %s,
+                    status: %s,
+                    user: %s,
+                    deletedAt: %s
+                }
+                """,
+                this.id,
+                this.firstName,
+                this.lastName,
+                this.dateOfBirth,
+                this.phone,
+                this.status,
+                this.user,
+                this.deletedAt);
+    }
 }

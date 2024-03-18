@@ -10,6 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
+@ToString
 @Table(name = "mst_user")
 @NoArgsConstructor
 @AllArgsConstructor
