@@ -1,18 +1,14 @@
 package com.enigmacamp.controller.impl;
 
 import com.enigmacamp.constant.ApiPathConstant;
-import com.enigmacamp.constant.LoanStatus;
 import com.enigmacamp.constant.MessageConstant;
 import com.enigmacamp.controller.LoanTypeOperations;
 import com.enigmacamp.model.dto.request.loan.LoanTypeRequest;
 import com.enigmacamp.model.dto.request.loan.LoanTypeUpdateRequest;
 import com.enigmacamp.model.dto.response.CommonResponse;
 import com.enigmacamp.model.dto.response.loan.LoanTypeResponse;
-import com.enigmacamp.model.entity.LoanType;
-import com.enigmacamp.repository.LoanTypeRepository;
 import com.enigmacamp.service.LoanTypeService;
 import lombok.RequiredArgsConstructor;
-import org.aspectj.bridge.Message;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

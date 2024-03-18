@@ -61,7 +61,7 @@ public class DataLoader implements CommandLineRunner {
                     .firstName("Muhammad")
                     .lastName("Acla")
                     .dateOfBirth(new Date(1))
-                    .status(true)
+                    .status(false)
                     .phone("8124779249")
                     .user(user)
                     .build();

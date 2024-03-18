@@ -23,10 +23,12 @@ public class CustomerServiceImpl implements CustomerService {
         Customer customer = customerRepository.findById(id).get();
 
         return CustomerResponse.builder()
+                .id(customer.getId())
                 .firstName(customer.getFirstName())
                 .lastName(customer.getLastName())
                 .phone(customer.getPhone())
                 .dateOfBirth(String.valueOf(customer.getDateOfBirth()))
+                .status(customer.getStatus().toString())
                 .build();
     }
 
@@ -37,10 +39,12 @@ public class CustomerServiceImpl implements CustomerService {
 
         customers.forEach(customer -> {
             CustomerResponse customerResponse = CustomerResponse.builder()
+                    .id(customer.getId())
                     .firstName(customer.getFirstName())
                     .lastName(customer.getLastName())
                     .phone(customer.getPhone())
                     .dateOfBirth(String.valueOf(customer.getDateOfBirth()))
+                    .status(customer.getStatus().toString())
                     .build();
             customerResponses.add(customerResponse);
         });
