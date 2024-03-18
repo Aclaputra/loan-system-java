@@ -1,4 +1,4 @@
-package com.enigmacamp.model.dto.request.loan;
+package com.enigmacamp.model.dto.request.loan.transaction;
 
 import com.enigmacamp.model.dto.id.CustomerId;
 import com.enigmacamp.model.dto.id.InstallmentTypeId;
