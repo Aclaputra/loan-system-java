@@ -1,4 +1,4 @@
-package com.enigmacamp.model.request;
+package com.enigmacamp.model.dto.request.auth;
 
 import lombok.Builder;
 import lombok.Getter;

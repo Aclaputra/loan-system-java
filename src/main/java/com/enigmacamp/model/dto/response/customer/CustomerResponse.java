@@ -1,4 +1,4 @@
-package com.enigmacamp.model.response.customer;
+package com.enigmacamp.model.dto.response.customer;
 
 import lombok.Builder;
 import lombok.Getter;

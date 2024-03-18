@@ -1,4 +1,4 @@
-package com.enigmacamp.model.response.user;
+package com.enigmacamp.model.dto.response.auth;
 
 import com.enigmacamp.model.entity.Role;
 import lombok.Builder;
@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-public class UserResponse {
+public class SignupResponse {
     private String email;
     private List<Role> roles;
 }

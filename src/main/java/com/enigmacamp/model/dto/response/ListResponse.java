@@ -1,4 +1,4 @@
-package com.enigmacamp.model.response;
+package com.enigmacamp.model.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;
