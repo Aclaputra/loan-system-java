@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RequestMapping(ApiPathConstant.DEFAULT)
-public interface InstallmentTypeOperations {
+public interface InstalmentTypeOperations {
     @PostMapping
     CommonResponse<InstallmentTypeResponse> createInstallmentType(@RequestBody InstallmentTypeRequest request);
 

@@ -6,7 +6,7 @@ import com.enigmacamp.model.dto.response.installment.InstallmentTypeResponse;
 
 import java.util.List;
 
-public interface InstallmentTypeService {
+public interface InstalmentTypeService {
     InstallmentTypeResponse create(InstallmentTypeRequest request);
     InstallmentTypeResponse getById(String id);
     List<InstallmentTypeResponse> getAll();
