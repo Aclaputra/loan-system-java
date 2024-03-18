@@ -8,5 +8,6 @@ import lombok.Setter;
 @Getter
 @Builder
 public class InstallmentTypeUpdateRequest {
+    private String id;
     private String instalmentType;
 }
