@@ -29,7 +29,7 @@ public class InstallmentTypeController implements InstalmentTypeOperations {
         InstallmentTypeResponse instalmentType = instalmentTypeService.create(request);
 
         CommonResponse<InstallmentTypeResponse> response = new CommonResponse<>();
-        response.setMessage(MessageConstant.LIST_SUCCESS);
+        response.setMessage(MessageConstant.CREATED_SUCCESS);
         response.setData(instalmentType);
 
         return ResponseEntity.status(HttpStatus.CREATED)
