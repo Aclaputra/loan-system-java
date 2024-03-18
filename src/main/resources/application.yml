@@ -1,0 +1,49 @@
+server:
+  port: ${APP_PORT}
+  servlet:
+    context-path: /api
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-exception: false
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:loandb
+    #    driver-class-name: org.postgresql.Driver
+    #    url: jdbc:postgresql://${DB_URL}:${DB_PORT}/${DB_NAME}
+    #    username: ${DB_USERNAME}
+    #    password: ${DB_PASSWORD}
+    continue-on-error: true
+    initialization-mode: always
+    initialize: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  test:
+    database:
+      replace: none
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+app:
+  loan-system:
+    jwt:
+      jwt-secret: ${JWT_SECRET}
+      app:
+        name: ${APP_NAME}
+      expired: ${JWT_EXPIRED}
+
