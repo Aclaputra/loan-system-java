@@ -21,9 +21,12 @@ public class LoanTransaction {
     @UuidGenerator
     private String id;
 
-//    private LoanType loanType;
-//    private InstalmentType instalmentType;
-//    private Customer customer;
+    @OneToOne
+    private LoanType loanType;
+    @OneToOne
+    private InstalmentType instalmentType;
+    @ManyToOne
+    private Customer customer;
 
     private Double nominal;
     private Long approvedAt;
@@ -32,7 +35,11 @@ public class LoanTransaction {
     @Enumerated(EnumType.STRING)
     private ApprovalStatus approvalStatus; // enum
 
-//    private List<LoanTransactionDetail> loanTransactionDetails;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "trx_loan_transaction_loan_transaction_detail"
+    )
+    private List<LoanTransactionDetail> loanTransactionDetails;
 
     private Long createdAt;
     private Long updatedAt;

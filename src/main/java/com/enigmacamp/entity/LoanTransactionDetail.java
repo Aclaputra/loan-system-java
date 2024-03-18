@@ -20,7 +20,8 @@ public class LoanTransactionDetail {
     private Long transactionDate;
     private Double nominal;
 
-//    private LoanTransaction loanTransaction;
+    @OneToOne
+    private LoanTransaction loanTransaction;
     @Enumerated(EnumType.STRING)
     private LoanStatus loanStatus; // enum
 
