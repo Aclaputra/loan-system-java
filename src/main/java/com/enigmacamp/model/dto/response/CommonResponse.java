@@ -1,12 +1,12 @@
 package com.enigmacamp.model.dto.response;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class CommonResponse<T> {
     private String message;
     private T data;
