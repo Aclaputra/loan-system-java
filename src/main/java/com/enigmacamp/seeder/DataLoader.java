@@ -1,10 +1,13 @@
 package com.enigmacamp.seeder;
 
+import com.enigmacamp.constant.EInstalmentType;
 import com.enigmacamp.constant.ERole;
 import com.enigmacamp.model.entity.Customer;
+import com.enigmacamp.model.entity.InstalmentType;
 import com.enigmacamp.model.entity.Role;
 import com.enigmacamp.model.entity.User;
 import com.enigmacamp.repository.CustomerRepository;
+import com.enigmacamp.repository.InstallmentTypeRepository;
 import com.enigmacamp.repository.RoleRepository;
 import com.enigmacamp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -22,9 +26,37 @@ public class DataLoader implements CommandLineRunner {
     RoleRepository roleRepository;
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    InstallmentTypeRepository installmentTypeRepository;
+
     @Override
     public void run(String... args) throws Exception {
         loadCustomerData();
+        loadInstallmentType();
+    }
+
+    private void loadInstallmentType() {
+        if (installmentTypeRepository.count() == 0) {
+            List<InstalmentType> instalmentTypes = List.of(
+                    InstalmentType.builder()
+                            .instalmentType(EInstalmentType.ONE_MONTH)
+                            .build(),
+                    InstalmentType.builder()
+                            .instalmentType(EInstalmentType.THREE_MONTHS)
+                            .build(),
+                    InstalmentType.builder()
+                            .instalmentType(EInstalmentType.NINE_MONTHS)
+                            .build(),
+                    InstalmentType.builder()
+                            .instalmentType(EInstalmentType.SIXTH_MONTHS)
+                            .build(),
+                    InstalmentType.builder()
+                            .instalmentType(EInstalmentType.TWELVE_MONTHS)
+                            .build()
+            );
+
+            installmentTypeRepository.saveAll(instalmentTypes);
+        }
     }
 
     private void loadCustomerData() {
