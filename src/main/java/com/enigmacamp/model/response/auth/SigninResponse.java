@@ -1,4 +1,4 @@
-package com.enigmacamp.model.response;
+package com.enigmacamp.model.response.auth;
 
 import com.enigmacamp.model.entity.Role;
 import lombok.Builder;
