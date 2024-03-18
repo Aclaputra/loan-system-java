@@ -7,7 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class SignupRequest {
-    private String email;
-    private String password;
+public class InstallmentTypeRequest {
+    private String instalmentType;
 }
