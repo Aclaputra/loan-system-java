@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -17,7 +18,8 @@ import java.util.List;
 @Table(name = "trx_loan")
 public class LoanTransaction {
     @Id
-    @UuidGenerator
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "loan_transaction_id")
     private String id;
 
     @OneToOne
@@ -34,11 +36,8 @@ public class LoanTransaction {
     @Enumerated(EnumType.STRING)
     private ApprovalStatus approvalStatus; // enum
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "trx_loan_transaction_loan_transaction_detail"
-    )
-    private List<LoanTransactionDetail> loanTransactionDetails;
+    @OneToMany(mappedBy = "loanTransaction")
+    private List<LoanTransactionDetail> loanTransactionDetails = new ArrayList<>();
 
     private Long createdAt;
     private Long updatedAt;
