@@ -2,14 +2,8 @@ package com.enigmacamp.seeder;
 
 import com.enigmacamp.constant.EInstalmentType;
 import com.enigmacamp.constant.ERole;
-import com.enigmacamp.model.entity.Customer;
-import com.enigmacamp.model.entity.InstalmentType;
-import com.enigmacamp.model.entity.Role;
-import com.enigmacamp.model.entity.User;
-import com.enigmacamp.repository.CustomerRepository;
-import com.enigmacamp.repository.InstallmentTypeRepository;
-import com.enigmacamp.repository.RoleRepository;
-import com.enigmacamp.repository.UserRepository;
+import com.enigmacamp.model.entity.*;
+import com.enigmacamp.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -28,11 +22,33 @@ public class DataLoader implements CommandLineRunner {
     UserRepository userRepository;
     @Autowired
     InstallmentTypeRepository installmentTypeRepository;
+    @Autowired
+    LoanTypeRepository loanTypeRepository;
 
     @Override
     public void run(String... args) throws Exception {
-        loadCustomerData();
         loadInstallmentType();
+        loadLoanType();
+        loadCustomerData();
+    }
+
+    private void loadLoanType() {
+        if (loanTypeRepository.count() == 0) {
+            List<LoanType> loanTypes = List.of(
+                    LoanType.builder()
+                            .type("Pinjaman Kredit Elektronik")
+                            .maxLoan(10000000.0)
+                            .build(),
+                    LoanType.builder()
+                            .type("Pinjaman Kredit Kendaraan")
+                            .maxLoan(100000000.0)
+                            .build()
+            );
+
+            List<LoanType> savedLoanTypes = loanTypeRepository.saveAll(loanTypes);
+
+            System.out.println("Saved Loan Types: " + savedLoanTypes);
+        }
     }
 
     private void loadInstallmentType() {
@@ -55,7 +71,9 @@ public class DataLoader implements CommandLineRunner {
                             .build()
             );
 
-            installmentTypeRepository.saveAll(instalmentTypes);
+            List<InstalmentType> savedInstallments = installmentTypeRepository.saveAll(instalmentTypes);
+
+            System.out.println("Saved Installment Types" + savedInstallments);
         }
     }
 

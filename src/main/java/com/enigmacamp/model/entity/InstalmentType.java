@@ -9,6 +9,7 @@ import org.hibernate.annotations.UuidGenerator;
 @Getter
 @Setter
 @Entity
+@ToString
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
