@@ -1,6 +1,6 @@
 package com.enigmacamp.repository;
 
-import com.enigmacamp.entity.Role;
+import com.enigmacamp.model.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

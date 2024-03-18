@@ -1,4 +1,4 @@
-package com.enigmacamp.entity;
+package com.enigmacamp.model.entity;
 
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;

@@ -1,9 +1,9 @@
 package com.enigmacamp.seeder;
 
 import com.enigmacamp.constant.ERole;
-import com.enigmacamp.entity.Customer;
-import com.enigmacamp.entity.Role;
-import com.enigmacamp.entity.User;
+import com.enigmacamp.model.entity.Customer;
+import com.enigmacamp.model.entity.Role;
+import com.enigmacamp.model.entity.User;
 import com.enigmacamp.repository.CustomerRepository;
 import com.enigmacamp.repository.RoleRepository;
 import com.enigmacamp.repository.UserRepository;

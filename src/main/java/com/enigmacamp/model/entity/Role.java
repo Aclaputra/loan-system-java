@@ -1,4 +1,4 @@
-package com.enigmacamp.entity;
+package com.enigmacamp.model.entity;
 
 import com.enigmacamp.constant.ERole;
 import jakarta.persistence.*;

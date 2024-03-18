@@ -1,6 +1,6 @@
 package com.enigmacamp.repository;
 
-import com.enigmacamp.entity.Customer;
+import com.enigmacamp.model.entity.Customer;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,4 +1,4 @@
-package com.enigmacamp.entity;
+package com.enigmacamp.model.entity;
 
 import com.enigmacamp.constant.LoanStatus;
 import jakarta.persistence.*;

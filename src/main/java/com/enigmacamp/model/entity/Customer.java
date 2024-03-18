@@ -1,4 +1,4 @@
-package com.enigmacamp.entity;
+package com.enigmacamp.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
