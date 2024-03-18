@@ -6,7 +6,7 @@ import com.enigmacamp.model.dto.request.installment.InstallmentTypeRequest;
 import com.enigmacamp.model.dto.request.installment.InstallmentTypeUpdateRequest;
 import com.enigmacamp.model.dto.response.installment.InstallmentTypeResponse;
 import com.enigmacamp.model.entity.InstalmentType;
-import com.enigmacamp.repository.InstallmentTypeRepository;
+import com.enigmacamp.repository.InstalmentTypeRepository;
 import com.enigmacamp.service.InstalmentTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public class InstalmentTypeServiceImpl implements InstalmentTypeService {
     @Autowired
-    private InstallmentTypeRepository installmentTypeRepository;
+    private InstalmentTypeRepository installmentTypeRepository;
 
     @Override
     public InstallmentTypeResponse create(InstallmentTypeRequest request) {

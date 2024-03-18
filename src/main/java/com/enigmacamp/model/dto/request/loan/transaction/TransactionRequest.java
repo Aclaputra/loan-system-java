@@ -13,6 +13,6 @@ import lombok.Setter;
 public class TransactionRequest {
     private LoanTypeId loanType;
     private InstallmentTypeId installmentType;
-    private CustomerId customerId;
+    private CustomerId customer;
     private Double nominal;
 }

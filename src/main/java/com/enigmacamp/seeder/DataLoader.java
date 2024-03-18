@@ -24,7 +24,7 @@ public class DataLoader implements CommandLineRunner {
     @Autowired
     UserRepository userRepository;
     @Autowired
-    InstallmentTypeRepository installmentTypeRepository;
+    InstalmentTypeRepository installmentTypeRepository;
     @Autowired
     LoanTypeRepository loanTypeRepository;
     @Autowired
