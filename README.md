@@ -21,6 +21,8 @@ Tester akan melakukan test aplikasi anda secara manual, sehingga
 anda harus memastikan bahwa backend yang anda buat sesuai dengan
 fitur dan endpoint yang sudah ditentukan dibawah.
 
+## API Documentation
+[Postman Published OPEN API](https://documenter.getpostman.com/view/14414794/2sA2xpS9Tu)
 
 ## Features
 
