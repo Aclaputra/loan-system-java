@@ -12,35 +12,4 @@ import java.time.LocalDate;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, String> {
-    @Query("""
-            SELECT
-                c
-            FROM
-                Customer c
-            WHERE
-                c.deletedAt is null  \s
-            """)
-    Page<Customer> getAllVisibleData(Pageable page);
-    @Query("""
-            SELECT
-                c
-            FROM
-                Customer c
-            WHERE
-                c.deletedAt is not null  \s
-            """)
-    Page<Customer> getAllDeletedData(Pageable page);
-    @Query("""
-            SELECT
-                c
-            FROM
-                Customer c
-            WHERE
-                c.deletedAt BETWEEN :start AND :end
-            """)
-    Page<Customer> getDeletedDataByDate(
-            @Param("start") LocalDate start,
-            @Param("end") LocalDate end,
-            Pageable page
-    );
 }

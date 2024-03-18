@@ -7,7 +7,6 @@ import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
 @Data
 @Getter
@@ -17,7 +16,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "mst_customer")
-@SQLDelete(sql = "UPDATE mst_customer SET deleted_at = CURRENT_DATE WHERE customer_id = ?")
+@SQLDelete(sql = "UPDATE mst_customer SET status = true WHERE id = ?")
 public class Customer {
     @Id
     @UuidGenerator
@@ -29,14 +28,11 @@ public class Customer {
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+7")
     private Date dateOfBirth;
     private String phone;
-    private boolean status;
+    private boolean status = false;
 
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
-    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+7")
-    @Column(name = "deleted_at")
-    private LocalDate deletedAt = null;
 
     @Override
     public String toString() {
@@ -49,7 +45,6 @@ public class Customer {
                     phone: %s,
                     status: %s,
                     user: %s,
-                    deletedAt: %s
                 }
                 """,
                 this.id,
@@ -58,7 +53,6 @@ public class Customer {
                 this.dateOfBirth,
                 this.phone,
                 this.status,
-                this.user,
-                this.deletedAt);
+                this.user);
     }
 }
