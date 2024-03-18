@@ -15,7 +15,7 @@ import java.sql.Date;
 import java.util.Optional;
 
 @Component
-public class CustomerDataLoader implements CommandLineRunner {
+public class DataLoader implements CommandLineRunner {
     @Autowired
     CustomerRepository customerRepository;
     @Autowired
@@ -47,7 +47,7 @@ public class CustomerDataLoader implements CommandLineRunner {
                     .firstName("Muhammad")
                     .lastName("Acla")
                     .dateOfBirth(new Date(1))
-                    .status("active")
+                    .status(true)
                     .phone("8124779249")
                     .user(user)
                     .build();

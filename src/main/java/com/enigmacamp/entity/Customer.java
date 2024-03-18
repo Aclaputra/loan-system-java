@@ -29,7 +29,7 @@ public class Customer {
     @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+7")
     private Date dateOfBirth;
     private String phone;
-    private String status;
+    private boolean status;
 
     @OneToOne
     @JoinColumn(name = "user_id")
