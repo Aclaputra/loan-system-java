@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 import java.util.Optional;
-import java.util.UUID;
 
 @Component
 public class CustomerDataLoader implements CommandLineRunner {
@@ -29,7 +28,11 @@ public class CustomerDataLoader implements CommandLineRunner {
     }
 
     private void loadCustomerData() {
-        if (customerRepository.count() == 0) {
+        if (
+                customerRepository.count() == 0
+                && roleRepository.count() == 0
+                && userRepository.count() == 0
+        ) {
             Optional<Role> roles = Optional.of(Role.builder()
                             .name(ERole.ROLE_CUSTOMER)
                             .build());
