@@ -120,14 +120,13 @@ public class DataLoader implements CommandLineRunner {
 
         if (loanTransactionRepository.count() == 0) {
             LoanTransactionDetail loanTransactionDetail = LoanTransactionDetail.builder()
-                    .transactionDate(Long.getLong("1661091574279"))
+                    .transactionDate(Long.parseLong("1661091574279"))
                     .nominal(1.03E7)
                     .loanStatus(LoanStatus.PAID)
-                    .createdAt(Long.getLong("1661002579786"))
-                    .updatedAt(Long.getLong("1661091574307"))
+                    .createdAt(Long.parseLong("1661002579786"))
+                    .updatedAt(Long.parseLong("1661091574307"))
                     .build();
 
-            LoanTransactionDetail savedLoanTransactionDetail = loanTransactionDetailRepository.save(loanTransactionDetail);
 
 
             LoanTransaction loanTransaction = LoanTransaction.builder()
@@ -135,19 +134,20 @@ public class DataLoader implements CommandLineRunner {
                     .loanType(loanTypes.get(0))
                     .customer(customer)
                     .nominal(10000000.0)
-                    .approvedAt(Long.getLong("1661091574279"))
+                    .approvedAt(Long.parseLong("1661091574279"))
                     .approvedBy("rifqyomp@gmail.com")
                     .approvalStatus(ApprovalStatus.APPROVED)
                     .loanTransactionDetails(List.of(loanTransactionDetail))
-                    .createdAt(Long.getLong("1661106557370"))
+                    .createdAt(Long.parseLong("1661106557370"))
                     .updatedAt(null)
                     .build();
 
             LoanTransaction savedLoanTransaction = loanTransactionRepository.save(loanTransaction);
-
             loanTransactionDetail.setLoanTransaction(savedLoanTransaction);
+            LoanTransactionDetail savedLoanTransactionDetail = loanTransactionDetailRepository.save(loanTransactionDetail);
 
             System.out.println("Saved Loan Transaction: " + savedLoanTransaction);
+            System.out.println("Saved Loan Transaction Detail: " + savedLoanTransactionDetail);
         }
     }
 }
