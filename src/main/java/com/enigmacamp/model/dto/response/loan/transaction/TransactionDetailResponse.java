@@ -1,4 +1,4 @@
-package com.enigmacamp.model.dto.response.loan;
+package com.enigmacamp.model.dto.response.loan.transaction;
 
 import lombok.Builder;
 import lombok.Getter;
