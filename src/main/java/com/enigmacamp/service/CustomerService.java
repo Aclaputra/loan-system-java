@@ -7,10 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface CustomerService {
-    CustomerResponse getCustomerById(String id);
-    List<CustomerResponse> getCustomers();
+    CustomerResponse getById(String id);
+    List<CustomerResponse> getAll();
     Customer update(CustomerRequest request);
     String deleteById(String id);
 }

@@ -7,7 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class UpdateLoanTypeRequest {
+public class LoanTypeUpdateRequest {
     private String id;
     private String type;
     private Double maxLoan;
