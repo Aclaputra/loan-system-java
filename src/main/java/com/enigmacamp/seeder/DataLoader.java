@@ -8,6 +8,7 @@ import com.enigmacamp.model.entity.*;
 import com.enigmacamp.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
@@ -31,6 +32,8 @@ public class DataLoader implements CommandLineRunner {
     LoanTransactionRepository loanTransactionRepository;
     @Autowired
     LoanTransactionDetailRepository loanTransactionDetailRepository;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Override
     public void run(String... args) throws Exception {
@@ -53,7 +56,7 @@ public class DataLoader implements CommandLineRunner {
 
             User user = User.builder()
                     .email("user@gmail.com")
-                    .password("password")
+                    .password(passwordEncoder.encode("password"))
                     .roles(roles.stream().toList())
                     .build();
 
