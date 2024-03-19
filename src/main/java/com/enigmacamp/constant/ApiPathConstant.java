@@ -3,6 +3,7 @@ package com.enigmacamp.constant;
 public class ApiPathConstant {
     public static final String DEFAULT = "/default";
     public static final String AUTH = "/auth";
+    public static final String ADMIN = "/admin";
     public static final String SIGN_UP = "/signup";
     public static final String SIGN_IN = "/signin";
     public static final String PARAM_ID = "/{id}";
