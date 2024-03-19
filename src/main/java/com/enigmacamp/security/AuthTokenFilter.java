@@ -25,8 +25,6 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        System.out.println("doFilterInternal");
-
         try {
             String headerAuth = request.getHeader(HttpHeaders.AUTHORIZATION);
             String token = null;
@@ -42,12 +40,10 @@ public class AuthTokenFilter extends OncePerRequestFilter {
                 authenticationToken.setDetails(new WebAuthenticationDetailsSource());
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             }
-            System.out.println("end of filter");
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }
 
         filterChain.doFilter(request, response);
-        System.out.println("filter done");
     }
 }
