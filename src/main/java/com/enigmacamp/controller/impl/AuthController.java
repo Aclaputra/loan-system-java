@@ -9,7 +9,6 @@ import com.enigmacamp.model.dto.response.CommonResponse;
 import com.enigmacamp.model.dto.response.auth.SigninResponse;
 import com.enigmacamp.model.dto.response.auth.SignupResponse;
 import com.enigmacamp.service.AuthService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -28,7 +27,7 @@ public class AuthController implements AuthOperations {
     public ResponseEntity<CommonResponse<SignupResponse>> signupAdmin(AuthAdminRequest request) {
         SignupResponse signupResponse = authService.signupAdmin(request);
 
-        CommonResponse<SignupResponse> response = new CommonResponse();
+        CommonResponse<SignupResponse> response = new CommonResponse<>();
         response.setMessage(MessageConstant.SIGN_UP_ADMIN_SUCCESS);
         response.setData(signupResponse);
 

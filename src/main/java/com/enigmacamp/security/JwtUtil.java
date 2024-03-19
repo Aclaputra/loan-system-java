@@ -9,6 +9,7 @@ import com.enigmacamp.model.entity.AppUser;
 import org.hibernate.type.descriptor.java.ObjectJavaType;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.ObjectError;
 
 import java.nio.charset.StandardCharsets;
 import java.time.Instant;
@@ -33,7 +34,7 @@ public class JwtUtil {
                 .withExpiresAt(Instant.now().plusSeconds(jwtExpiration))
                 .withIssuedAt(Instant.now())
                 // FIXME: list of roles https://stackoverflow.com/questions/75608603/issue-with-extracting-role-claim-from-jwt-token-in-spring-api
-                .withClaim("roles", appUser.getRoles())
+                .withClaim("roles", appUser.getRoles().toString())
                 .sign(algorithm);
     }
 
@@ -52,7 +53,8 @@ public class JwtUtil {
 
             Map<String, Object> userInfo = new HashMap<>();
             userInfo.put("userId", decodedJWT.getSubject());
-            userInfo.put("roles", decodedJWT.getClaim("roles").asList(List.class));
+            userInfo.put("roles", decodedJWT.getClaim("roles"));
+
             return userInfo;
         } catch (JWTVerificationException e) {
             throw new RuntimeException(e.getMessage());

@@ -43,7 +43,7 @@ public class AuthServiceImpl implements AuthService {
     public SignupResponse signupAdmin(AuthAdminRequest request) {
         try {
             List<Role> roles = new ArrayList<>();
-            Role roleAdmin = roleService.getOrSave(ERole.ROLE_CUSTOMER);
+            Role roleAdmin = roleService.getOrSave(ERole.ROLE_ADMIN);
             Role roleStaff = roleService.getOrSave(ERole.ROLE_STAFF);
             roles.add(roleAdmin);
             roles.add(roleStaff);
@@ -74,7 +74,7 @@ public class AuthServiceImpl implements AuthService {
 
             User user = User.builder()
                     .email(request.getEmail())
-                    .password(request.getPassword())
+                    .password(passwordEncoder.encode(request.getPassword()))
                     .roles(roles)
                     .build();
             userRepository.save(user);
@@ -113,10 +113,11 @@ public class AuthServiceImpl implements AuthService {
 
             return SigninResponse.builder()
                     .token(token)
+                    .email(request.getEmail())
                     .roles(appUser.getRoles())
                     .build();
         } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "user not found");
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "user not found " + e.getMessage());
         }
     }
 }

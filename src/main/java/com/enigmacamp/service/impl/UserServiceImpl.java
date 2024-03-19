@@ -7,6 +7,7 @@ import com.enigmacamp.model.entity.User;
 import com.enigmacamp.repository.UserRepository;
 import com.enigmacamp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public AppUser loadUserByUserId(String userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new UsernameNotFoundException("invalid credential user"));
+
+        return AppUser.builder()
+                .id(user.getId())
+                .email(user.getEmail())
+                .password(user.getPassword())
+                .roles(user.getRoles())
+                .build();
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(email);
 
         return AppUser.builder()
                 .id(user.getId())
