@@ -10,6 +10,6 @@ import java.util.List;
 public interface CustomerService {
     CustomerResponse getById(String id);
     List<CustomerResponse> getAll();
-    Customer updateOrSave(Customer request);
+    Customer updateOrSave(CustomerRequest request);
     String deleteById(String id);
 }

@@ -3,6 +3,7 @@ package com.enigmacamp.service.impl;
 import com.enigmacamp.constant.ERole;
 import com.enigmacamp.model.dto.request.auth.AuthAdminRequest;
 import com.enigmacamp.model.dto.request.auth.AuthCustomerRequest;
+import com.enigmacamp.model.dto.request.customer.CustomerRequest;
 import com.enigmacamp.model.dto.response.auth.SigninResponse;
 import com.enigmacamp.model.dto.response.auth.SignupResponse;
 import com.enigmacamp.model.entity.AppUser;
@@ -25,7 +26,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,15 +79,15 @@ public class AuthServiceImpl implements AuthService {
                     .build();
             userRepository.save(user);
 
-            Customer customer = Customer.builder()
+            CustomerRequest customerRequest = CustomerRequest.builder()
                     .firstName(request.getFirstName())
                     .lastName(request.getLastName())
                     .phone(request.getPhone())
-                    .dateOfBirth(Date.valueOf(request.getDateOfBirth()))
-                    .status(Boolean.valueOf(request.getStatus()))
+                    .dateOfBirth(request.getDateOfBirth())
+                    .status(request.getStatus())
                     .build();
 
-            customerService.updateOrSave(customer);
+            customerService.updateOrSave(customerRequest);
 
             return SignupResponse.builder()
                     .email(user.getEmail())

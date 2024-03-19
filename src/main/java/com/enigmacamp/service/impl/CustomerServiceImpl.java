@@ -53,7 +53,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer update(CustomerRequest request) throws RuntimeException {
+    public Customer updateOrSave(CustomerRequest request) throws RuntimeException {
         if (customerRepository.findById(request.getId()).isPresent()) {
             Customer customer = Customer.builder()
                     .firstName(request.getFirstName())

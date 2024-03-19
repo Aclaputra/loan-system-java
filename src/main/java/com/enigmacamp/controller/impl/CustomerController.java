@@ -56,7 +56,7 @@ public class CustomerController implements CustomerOperations {
     public ResponseEntity<CommonResponse<CustomerResponse>> updateCustomer(@RequestBody CustomerRequest request) {
         String message = String.format(MessageConstant.UPDATE_SUCCESS, request.getFirstName());
 
-        Customer updateCustomer = customerService.update(request);
+        Customer updateCustomer = customerService.updateOrSave(request);
         CustomerResponse customerResponse = CustomerResponse.builder()
                 .id(updateCustomer.getId())
                 .firstName(updateCustomer.getFirstName())
