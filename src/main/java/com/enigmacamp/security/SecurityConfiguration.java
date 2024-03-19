@@ -26,8 +26,7 @@ public class SecurityConfiguration {
     }
 
     private static final String[] WHITELIST_URL = {
-            "auth/signup",
-            "auth/signin"
+            "/auth/**"
     };
 
     @Bean

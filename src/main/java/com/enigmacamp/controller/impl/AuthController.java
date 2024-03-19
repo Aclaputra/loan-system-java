@@ -10,6 +10,7 @@ import com.enigmacamp.model.dto.response.auth.SigninResponse;
 import com.enigmacamp.model.dto.response.auth.SignupResponse;
 import com.enigmacamp.service.AuthService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping(ApiPathConstant.AUTH)
 public class AuthController implements AuthOperations {
+    @Autowired
     private AuthService authService;
     @Override
     @PostMapping(ApiPathConstant.SIGN_UP + ApiPathConstant.ADMIN)

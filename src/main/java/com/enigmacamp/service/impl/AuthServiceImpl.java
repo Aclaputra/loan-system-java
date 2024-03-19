@@ -87,7 +87,7 @@ public class AuthServiceImpl implements AuthService {
                     .status(request.getStatus())
                     .build();
 
-            customerService.updateOrSave(customerRequest);
+            customerService.save(customerRequest, user);
 
             return SignupResponse.builder()
                     .email(user.getEmail())

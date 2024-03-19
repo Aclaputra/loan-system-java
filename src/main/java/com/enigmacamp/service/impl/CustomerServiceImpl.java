@@ -4,6 +4,7 @@ import com.enigmacamp.constant.MessageConstant;
 import com.enigmacamp.model.dto.request.customer.CustomerRequest;
 import com.enigmacamp.model.dto.response.customer.CustomerResponse;
 import com.enigmacamp.model.entity.Customer;
+import com.enigmacamp.model.entity.User;
 import com.enigmacamp.repository.CustomerRepository;
 import com.enigmacamp.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,7 +54,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer updateOrSave(CustomerRequest request) throws RuntimeException {
+    public Customer update(CustomerRequest request) throws RuntimeException {
         if (customerRepository.findById(request.getId()).isPresent()) {
             Customer customer = Customer.builder()
                     .firstName(request.getFirstName())
@@ -66,6 +67,19 @@ public class CustomerServiceImpl implements CustomerService {
         } else {
             throw new RuntimeException("Customer with id " + request.getId() + " not found");
         }
+    }
+
+    @Override
+    public Customer save(CustomerRequest request, User user) {
+        Customer customer = Customer.builder()
+                .firstName(request.getFirstName())
+                .lastName(request.getLastName())
+                .status(Boolean.valueOf(request.getStatus()))
+                .phone(request.getPhone())
+                .user(user)
+                .build();
+
+        return customerRepository.save(customer);
     }
 
     @Override
