@@ -63,6 +63,7 @@ public class CustomerController implements CustomerOperations {
                 .lastName(updateCustomer.getLastName())
                 .phone(updateCustomer.getPhone())
                 .dateOfBirth(String.valueOf(updateCustomer.getDateOfBirth()))
+                .status(request.getStatus())
                 .build();
 
         CommonResponse<CustomerResponse> response = new CommonResponse<>();
@@ -76,7 +77,7 @@ public class CustomerController implements CustomerOperations {
 
     @Override
     @DeleteMapping(ApiPathConstant.PARAM_ID)
-    public ResponseEntity<CommonResponse<String>> deleteCustomer(String id) {
+    public ResponseEntity<CommonResponse<String>> deleteCustomer(@PathVariable String id) {
         String message = customerService.deleteById(id);
 
         CommonResponse<String> response = new CommonResponse<>();

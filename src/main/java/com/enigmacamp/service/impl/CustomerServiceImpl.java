@@ -57,10 +57,12 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer update(CustomerRequest request) throws RuntimeException {
         if (customerRepository.findById(request.getId()).isPresent()) {
             Customer customer = Customer.builder()
+                    .id(request.getId())
                     .firstName(request.getFirstName())
                     .lastName(request.getLastName())
                     .phone(request.getPhone())
                     .dateOfBirth(Date.valueOf(request.getDateOfBirth()))
+                    .status(Boolean.valueOf(request.getStatus()))
                     .build();
 
             return customerRepository.save(customer);
